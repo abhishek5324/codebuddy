@@ -1,11 +1,10 @@
 const chalk = require('chalk');
 const app = require('./src/app');
-const dotenv = require('dotenv');
-dotenv.config()
+const env = require("./constants");
 const { connect } = require('./src/helpers/db.helper');
 
 connect().then(() => {
-    const port = process.env.PORT
+    const port = env.PORT
     app.listen(port, () => {
         console.log(chalk.green(`Server started on port http://localhost:${port}`));
     });
